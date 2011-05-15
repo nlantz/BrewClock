@@ -173,7 +173,6 @@ public class BrewClockActivity extends Activity
 			addDefaultTeas(tD);
 		}
 
-		// Open the Tea DB cursor and creates the Cursor Adapter
 		Cursor cur = tD.all(this);
 		SimpleCursorAdapter sca = new SimpleCursorAdapter(
 				this,
