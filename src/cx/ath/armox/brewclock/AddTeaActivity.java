@@ -29,7 +29,6 @@ public class AddTeaActivity extends Activity implements OnSeekBarChangeListener 
 		tvCurrTime = (TextView) findViewById(R.id.tvCurrTime);		
 		
 		tvCurrTime.setText(String.valueOf(sbTeaTime.getProgress()+1) + " m");
-
 	}
 
 	public void onProgressChanged(SeekBar seekBar, int progress,
