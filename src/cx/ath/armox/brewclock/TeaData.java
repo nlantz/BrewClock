@@ -55,7 +55,6 @@ class TeaData extends SQLiteOpenHelper {
 		contval.put(B_TIME, brew_time);
 		
 		db.insert(TBL_NAME, null, contval);
-		
 	}
 	
 	public Cursor all (Activity acti) {
@@ -75,5 +74,4 @@ class TeaData extends SQLiteOpenHelper {
 		SQLiteDatabase db = getReadableDatabase();
 		return DatabaseUtils.queryNumEntries(db, TBL_NAME);
 	}
-	
 }
