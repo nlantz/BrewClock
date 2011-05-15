@@ -23,7 +23,6 @@ class TeaData extends SQLiteOpenHelper {
 	public TeaData(Context context, String name, CursorFactory factory,
 			int version) {
 		super(context, name, factory, version);
-		// TODO Auto-generated constructor stub
 	}
 
 	public TeaData(Context context) {
