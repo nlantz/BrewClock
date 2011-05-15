@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:visible="true" 
+		android:enabled="true" 
+		android:id="@+id/save_tea" 
+		android:checked="false" 
+		android:title="@string/save_tea" 
+		android:menuCategory="system" 
+		android:checkable="false"/>
+</menu>

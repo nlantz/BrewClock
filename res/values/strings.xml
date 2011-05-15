@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BrewClock</string>
+    <string name="brew_up">Brew Up!</string>
+    <string name="brews">Brews: </string>
+    <string name="add_tea_label">Add Tea</string>
+    <string name="brew_time">Brew Time</string>
+    <string name="tea_name">Tea Name</string>
+    <string name="save_tea">Save Tea</string>
+    <string name="invalid_tea_title">Tea could not be saved.</string>
+	<string name="invalid_tea_name">Enter a name for the tea.</string>
+	<string name="save_tea_success">%s tea has been saved.</string>
+</resources>

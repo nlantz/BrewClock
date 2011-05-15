@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+  <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dip">
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="20dip"
+      android:text="@string/brews" />
+    <TextView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="None"
+      android:gravity="right"
+      android:textSize="20dip"
+      android:id="@+id/brew_count_label" />
+  </LinearLayout>
+  <LinearLayout
+  	android:orientation="vertical"
+  	android:layout_width="fill_parent"
+  	android:layout_height="wrap_content">
+  	<Spinner
+  		android:id="@+id/tea_spinner"
+  		android:layout_width="fill_parent"
+  		android:layout_height="wrap_content"/>
+  </LinearLayout>
+  <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:padding="10dip">
+    <Button
+      android:id="@+id/brew_time_down"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="-"
+      android:textSize="40dip" />
+    <TextView
+      android:id="@+id/brew_time"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="0:00"
+      android:textSize="40dip"
+      android:padding="10dip" />
+    <Button
+      android:id="@+id/brew_time_up"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="+"
+      android:textSize="40dip" />
+  </LinearLayout>
+  <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:gravity="bottom"
+    android:padding="10dip">
+	<ProgressBar 
+		android:id="@+id/pbBrewing"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:max="100"
+		android:minHeight="30dip"
+		android:maxHeight="30dip"
+		style="?android:attr/progressBarStyleHorizontal"/>
+  </LinearLayout>
+  <Button
+    android:id="@+id/brew_start"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:text="Start" />
+</LinearLayout>
