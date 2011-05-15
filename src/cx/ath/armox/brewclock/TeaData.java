@@ -38,7 +38,6 @@ class TeaData extends SQLiteOpenHelper {
 			");";
 
 		arg0.execSQL(sql);
-
 	}
 
 	@Override
