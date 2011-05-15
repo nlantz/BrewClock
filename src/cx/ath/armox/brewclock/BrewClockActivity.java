@@ -182,8 +182,7 @@ public class BrewClockActivity extends Activity
 				new String[] {TeaData.NAME},
 				new int[] {android.R.id.text1}
 			);
-		// set the adapter in the Spinner and vice-versa(?)
-//		sca.setDropDownViewResource(R.layout.spinnitem);
+
 		sca.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinTeas.setAdapter(sca);
 
