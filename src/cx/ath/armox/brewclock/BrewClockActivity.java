@@ -145,7 +145,7 @@ public class BrewClockActivity extends Activity
 		brewCountLabel = (TextView) findViewById(R.id.brew_count_label);
 		brewTimeLabel = (TextView) findViewById(R.id.brew_time);
 		spinTeas = (Spinner) findViewById(R.id.tea_spinner);
-//		pbBrewing = (ProgressBar) findViewById(R.id.pbBrewing);
+		pbBrewing = (ProgressBar) findViewById(R.id.pbBrewing);
 
 		brewAddTime.setOnClickListener(this);
 		brewDecreaseTime.setOnClickListener(this);
