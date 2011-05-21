@@ -107,7 +107,8 @@ class Brewer {
 public class BrewClockActivity extends Activity 
 	implements OnClickListener, OnItemSelectedListener {
 
-	protected int defaultBrewTime = 3;
+	protected int defaultBrewTime; 
+	protected int currBrewTime = defaultBrewTime = 3;
 	protected Button brewAddTime;
 	protected Button brewDecreaseTime;
 	protected Button startBrew;
@@ -122,8 +123,9 @@ public class BrewClockActivity extends Activity
 			long id) {
 		if (spinner == spinTeas) {
 			Cursor sel = (Cursor) spinner.getSelectedItem();
-			brw.setBrewTime(sel.getInt(2));
-			brewTimeLabel.setText(String.valueOf(sel.getInt(2) + "m"));
+			currBrewTime = sel.getInt(2);
+			brw.setBrewTime(currBrewTime);
+			brewTimeLabel.setText(String.valueOf(currBrewTime + "m"));
 		}
 	}
 
@@ -137,7 +139,7 @@ public class BrewClockActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		
-		TeaData tD = new TeaData(this);
+		TeaData td = new TeaData(this);
 
 		brewAddTime = (Button) findViewById(R.id.brew_time_up);
 		brewDecreaseTime = (Button) findViewById(R.id.brew_time_down);
@@ -155,13 +157,17 @@ public class BrewClockActivity extends Activity
 			@Override
 			public void updBrewTime(long millis) {
 				brewTimeLabel.setText(String.valueOf(millis/1000) + "s");
+				int prog = (int) (millis/10)/(currBrewTime*60);
+				pbBrewing.setProgress(100-prog);
 			}
 			
 			@Override
 			public void theEnd() {
 				brewCountLabel.setText(String.valueOf(brewCount));
 				brewTimeLabel.setText(String.valueOf(brewTime) + "m");
+				pbBrewing.setProgress(100);
 				Toast.makeText(getApplication(), R.string.brew_up, Toast.LENGTH_LONG).show();
+				spinTeas.setClickable(true);
 			}
 		};
 
@@ -169,11 +175,11 @@ public class BrewClockActivity extends Activity
 		brewTimeLabel.setText(String.valueOf(defaultBrewTime) + "m");
 		brewCountLabel.setText("0");
 
-		if (tD.count() == 0) {
-			addDefaultTeas(tD);
+		if (td.count() == 0) {
+			addDefaultTeas(td);
 		}
 
-		Cursor cur = tD.all(this);
+		Cursor cur = td.all(this);
 		SimpleCursorAdapter sca = new SimpleCursorAdapter(
 				this,
 				android.R.layout.simple_spinner_item,
@@ -196,13 +202,12 @@ public class BrewClockActivity extends Activity
 				try {
 					startActivity(intent);
 				} catch (android.content.ActivityNotFoundException e) {
-					Toast.makeText(this, "A bellooo nun sarà mejo che prima la fai st'acctivity?", Toast.LENGTH_SHORT).show();
+					Toast.makeText(this, "A bellooo 'un sarà mejo che prima 'a fai st'acctivity?", Toast.LENGTH_SHORT).show();
 				}
 				return true;
 
 		default:
 			return super.onOptionsItemSelected(item);
-			
 		}
 	}
 
@@ -220,20 +225,23 @@ public class BrewClockActivity extends Activity
 	}
 
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.brew_time_down:
-			brewTimeLabel.setText(String.valueOf(brw.decBrewTime()) + "m");
-			break;
-		case R.id.brew_time_up:
-			brewTimeLabel.setText(String.valueOf(brw.incBrewTime()) + "m");
-			break;
-		case R.id.brew_start:
-			brw.startBrew();
-			break;
-
-		default:
-			break;
+		if (! brw.isBrewing) {
+			switch (v.getId()) {
+			case R.id.brew_time_down:
+				currBrewTime = brw.decBrewTime();
+				brewTimeLabel.setText(String.valueOf(currBrewTime) + "m");
+				break;
+			case R.id.brew_time_up:
+				currBrewTime = brw.incBrewTime();
+				brewTimeLabel.setText(String.valueOf(currBrewTime) + "m"); 
+				break;
+			case R.id.brew_start:
+				if (brw.startBrew()) {
+					pbBrewing.setProgress(0);
+					spinTeas.setClickable(false);
+				}
+				break;
+			}
 		}
-
 	}
 }
