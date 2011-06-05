@@ -28,7 +28,7 @@ class Brewer {
 
 	/**
 	 * Called for every second while brewing.
-	 * You must override it to update a TextView or anything else.
+	 * You must override it to update a TextView or something else.
 	 * 
 	 * @param millisUntilFinished
 	 *            Milliseconds to the end of brewing.
