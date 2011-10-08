@@ -27,7 +27,7 @@ class Brewer {
 	protected TextView tvBrewTime;
 
 	/**
-	 * Called for every second while brewing.
+	 * Called every second while brewing.
 	 * You must override it to update a TextView or something else.
 	 * 
 	 * @param millisUntilFinished
@@ -109,7 +109,7 @@ public class BrewClockActivity extends Activity
 
 	protected int defaultBrewTime; 
 	protected int currBrewTime = defaultBrewTime = 3;
-	protected Button brewAddTime;
+	protected Button brewIncreaseTime;
 	protected Button brewDecreaseTime;
 	protected Button startBrew;
 	protected TextView brewCountLabel;
@@ -141,7 +141,7 @@ public class BrewClockActivity extends Activity
 		
 		TeaData td = new TeaData(this);
 
-		brewAddTime = (Button) findViewById(R.id.brew_time_up);
+		brewIncreaseTime = (Button) findViewById(R.id.brew_time_up);
 		brewDecreaseTime = (Button) findViewById(R.id.brew_time_down);
 		startBrew = (Button) findViewById(R.id.brew_start);
 		brewCountLabel = (TextView) findViewById(R.id.brew_count_label);
@@ -149,7 +149,7 @@ public class BrewClockActivity extends Activity
 		spinTeas = (Spinner) findViewById(R.id.tea_spinner);
 		pbBrewing = (ProgressBar) findViewById(R.id.pbBrewing);
 
-		brewAddTime.setOnClickListener(this);
+		brewIncreaseTime.setOnClickListener(this);
 		brewDecreaseTime.setOnClickListener(this);
 		startBrew.setOnClickListener(this);
 
